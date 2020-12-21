@@ -37,6 +37,7 @@ namespace MafiaForum
                 .AddDefaultTokenProviders();
 
             services.AddScoped<IForum, ForumService>();
+            services.AddScoped<IPost, PostService>();
 
             services.AddControllersWithViews();
         }
