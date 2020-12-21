@@ -1,7 +1,9 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MafiaForum.Models
 {
+    [Table("PostReply")]
     public class PostReply
     {
         public int Id { get; set; }

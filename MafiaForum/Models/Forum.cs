@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace MafiaForum.Models
 {
+    [Table("Forum")]
     public class Forum
     {
         public int Id { get; set; }

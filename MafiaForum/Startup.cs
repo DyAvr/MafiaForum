@@ -1,4 +1,6 @@
 using MafiaForum.Models;
+using MafiaForum.Models.Interfaces;
+using MafiaForum.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
@@ -31,7 +33,10 @@ namespace MafiaForum
                     opts.User.RequireUniqueEmail = true;    // уникальный email
                     opts.User.AllowedUserNameCharacters = ".@abcdefghijklmnopqrstuvwxyz0123456789"; // допустимые символы
             })
-                .AddEntityFrameworkStores<ApplicationContext>();
+                .AddEntityFrameworkStores<ApplicationContext>()
+                .AddDefaultTokenProviders();
+
+            services.AddScoped<IForum, ForumService>();
 
             services.AddControllersWithViews();
         }

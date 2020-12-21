@@ -4,14 +4,16 @@ using MafiaForum.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace MafiaForum.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20201221185803_forum_models")]
+    partial class forum_models
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -40,7 +42,7 @@ namespace MafiaForum.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Forum");
+                    b.ToTable("Forums");
                 });
 
             modelBuilder.Entity("MafiaForum.Models.Post", b =>
@@ -71,7 +73,7 @@ namespace MafiaForum.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Post");
+                    b.ToTable("Posts");
                 });
 
             modelBuilder.Entity("MafiaForum.Models.PostReply", b =>
@@ -99,7 +101,7 @@ namespace MafiaForum.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("PostReply");
+                    b.ToTable("PostReplies");
                 });
 
             modelBuilder.Entity("MafiaForum.Models.User", b =>
