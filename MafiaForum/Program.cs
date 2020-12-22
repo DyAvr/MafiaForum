@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using MafiaForum.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.DependencyInjection;
+using IHostingEnvironment = Microsoft.Extensions.Hosting.IHostingEnvironment;
 
 namespace MafiaForum
 {
@@ -40,6 +41,11 @@ namespace MafiaForum
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
             Host.CreateDefaultBuilder(args)
+                .ConfigureAppConfiguration((builderContext, config) =>
+                {
+                    IHostEnvironment env = builderContext.HostingEnvironment;
+                    config.AddJsonFile("storageSettings.json", optional : false, reloadOnChange : true);
+                })
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();

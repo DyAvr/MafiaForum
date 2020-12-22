@@ -40,6 +40,7 @@ namespace MafiaForum
             services.AddScoped<IPost, PostService>();
             services.AddScoped<IUser, UserService>();
             services.AddScoped<IUpload, UploadService>();
+            services.AddSingleton(Configuration);
 
             services.AddControllersWithViews();
         }
