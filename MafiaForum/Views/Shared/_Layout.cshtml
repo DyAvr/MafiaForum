@@ -1,11 +1,18 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Identity
+@inject UserManager<MafiaForum.Models.User> UserManager;
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MafiaForum</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/style.css" />
+    
+    <link href="https://fonts.googleapis.com/css?family=Roboto|Roboto+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
 </head>
 <body>
     <header>
@@ -24,17 +31,22 @@
                                 <li class="nav-item">
                                     <input class="nav-link text-dark" type="submit" value="Выход" />
                                 </li>
-                                @{bool bTest = User.IsInRole("admin");
-                                    if (bTest)
-                                    {
-                                        <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-controller="Users" asp-action="Index">Пользователи</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link text-dark" asp-controller="Roles" asp-action="Index">Роли</a>
-                                        </li>
-                                    }
-                                }
+                                <li class="dropdown nav-item">
+                                    <a href="#" class="dropdown-toggle nav-link text-dark" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Settings<span class="caret"></span></a>
+                                    <ul class="dropdown-menu">
+                                        <li role="separator" class="divider"></li>
+                                        <li class="dropdown-header">Profile</li>
+                                        <li class="dropdown-item"><a asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">My Profile</a></li>
+                                        @if (User.IsInRole("admin"))
+                                        {
+                                            <li role="separator" class="divider"></li>
+                                            <li class="dropdown-header">Admin</li>
+                                            <li class="dropdown-item"><a asp-controller="Forum" asp-action="Create">Create Forum</a></li>
+                                            <li class="dropdown-item"><a asp-controller="Users" asp-action="Index">Users</a></li>
+                                            <li class="dropdown-item"><a asp-controller="Roles" asp-action="Index">Roles</a></li>
+                                        }
+                                    </ul>
+                                    </li>
                                 <li class="nav-item">
                                     <p class="nav-link text-dark">@User.Identity.Name</p>
                                 </li>
@@ -54,7 +66,7 @@
                     }
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Forum" asp-action="Index">Forums</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>

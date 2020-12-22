@@ -17,6 +17,7 @@
   <ItemGroup>
     <Folder Include="Service\" />
     <Folder Include="Views\Forum\" />
+    <Folder Include="wwwroot\images\forum\" />
   </ItemGroup>
 
 </Project>

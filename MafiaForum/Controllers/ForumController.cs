@@ -50,7 +50,7 @@ namespace MafiaForum.Controllers
                 Id = post.Id,
                 AuthorId = post.User.Id,
                 AuthorRating = post.User.Rating,
-                AuthorName = post.User.UserName,
+                AuthorName = post.User.Nickname,
                 Title = post.Title,
                 DatePosted = post.Created.ToString(),
                 RepliesCount = post.Replies.Count(),

@@ -15,16 +15,16 @@
                     <a asp-controller="Post"
                        asp-action="Create"
                        asp-route-id="@Model.Forum.Id"
-                       class="btn btn-newPost">
+                       class="btn btn-newPost" style="text-align : center">
                         Create Post
                     </a>
                 </span>
             }
             <form asp-controller="Forum" asp-action="Search" method="post">
                 <div class="searchForm">
-                    <input asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)" />
-                    <button type="submit" class="btn btn-forumSearch">
-                        <i class="material-icons">search</i>
+                    <input style="background-color: white; width: 500px" asp-for="SearchQuery" type="text" placeholder="Search..." class="searchBar" onfocus="clearThis(this)" />
+                    <button type="submit"  class="btn btn-forumSearch">
+                        <i style="background-color: white" class="material-icons">search</i>
                     </button>
                 </div>
                 <input asp-for="Forum.Id" name="id" type="hidden" />

@@ -36,7 +36,7 @@ namespace MafiaForum.Controllers
                 Id = post.Id,
                 Title = post.Title,
                 AuthorId = post.User.Id,
-                AuthorName = post.User.UserName,
+                AuthorName = post.User.Nickname,
                 AuthorImageUrl = post.User.ProfileImageUrl,
                 AuthorRating = post.User.Rating,
                 DateCreated = post.Created,
@@ -100,7 +100,7 @@ namespace MafiaForum.Controllers
             return replies.Select(reply => new PostReplyViewModel
             {
                 Id = reply.Id,
-                AuthorName = reply.User.UserName,
+                AuthorName = reply.User.Nickname,
                 AuthorId = reply.User.Id,
                 AuthorRating = reply.User.Rating,
                 AuthorImageUrl = reply.User.ProfileImageUrl,
@@ -113,7 +113,7 @@ namespace MafiaForum.Controllers
         private bool IsAuthorAdmin(User user)
         {
             return _userManager.GetRolesAsync(user)
-                .Result.Contains("Admin");
+                .Result.Contains("admin");
         }
     }
 }

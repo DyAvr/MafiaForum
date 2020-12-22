@@ -1,6 +1,63 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿@model MafiaForum.ViewModels.Home.HomeIndexViewModel
 
+<div class="container body-content">
+    <div class="row frontPageSplash">
+        <div class="col-md-6 frontPageLearn">
+            <div class="frontPageHeading">
+                Learn, Collaborate, Share knowledge
+            </div>
+            <p class="frontPageSubHeading">OpenMindMafia is the newest mafia forum</p>
+            
+            <div>
+                <form asp-controller="Search" asp-action="Search" method="post">
+                    <input asp-for="SearchQuery" type="text" class="homeSearch" placeholder="Search..." />
+                </form>
+            </div>
+        </div>
+        <div class="col-md-6">
 
-<h1>А где же форум?</h1>
+        </div>
+    </div>
+    
+    <div class="row frontPageContent">
+        <h3 id="latestPosts">Latest posts:</h3>
+        
+        <table class="table table-hover" id="latestPostsTable">
+            <tbody>
+                @foreach (var post in Model.LatestPosts)
+                {
+                    <tr>
+                        <td>
+                            <div class="forumLogo" style="background-image: url(@post.Forum.ImageUrl);"></div>
+                            <div class="postTitle">
+                                <a asp-controller="Post" asp-action="Index" asp-route-id="@post.Id">
+                                    @post.Title
+                                </a>
+                            </div>
+                            <div class="postSubTitle">
+                                @if (post.RepliesCount == 1)
+                                {
+                                    <span>@post.RepliesCount reply</span>
+                                }
+                                @if (post.RepliesCount == 0)
+                                {
+                                    <span>No replies</span>
+                                }
+                                else
+                                {
+                                    <span>@post.RepliesCount replies</span>
+                                }
+                                
+                                <span class="postUser">
+                                    <a asp-controller="Profile" asp-action="Detail" asp-route-id="@post.AuthorId">
+                                        @post.AuthorName
+                                    </a>
+                                </span>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
