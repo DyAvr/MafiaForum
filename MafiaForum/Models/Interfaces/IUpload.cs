@@ -8,6 +8,6 @@ namespace MafiaForum.Models.Interfaces
 {
     public interface IUpload
     {
-        CloudBlobContainer GetBlobContainer(string connectionString);
+        CloudBlobContainer GetBlobContainer(string connectionString, string containerName);
     }
 }
