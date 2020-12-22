@@ -48,25 +48,25 @@ namespace MafiaForum.Controllers
             return View(model);
         }
 
-        // public IActionResult Index()
-        // {
-        //     var profiles = _userService.GetAll()
-        //         .OrderByDescending(user => user.Rating)
-        //         .Select(u => new ProfileViewModel
-        //         {
-        //             Nickname = u.Nickname,
-        //             ProfileImageUrl = u.ProfileImageUrl,
-        //             UserRating = u.Rating.ToString(),
-        //             MemeberSince = u.MemberSince,
-        //         });
-        //
-        //     var model = new ProfileListViewModel
-        //     {
-        //         Profiles = profiles
-        //     };
-        //
-        //     return View(model);
-        // }
+        public IActionResult Index()
+        {
+            var profiles = _userService.GetAll()
+                .OrderByDescending(user => user.Rating)
+                .Select(u => new ProfileViewModel
+                {
+                    Nickname = u.Nickname,
+                    ProfileImageUrl = u.ProfileImageUrl,
+                    UserRating = u.Rating.ToString(),
+                    MemeberSince = u.MemberSince,
+                });
+        
+            var model = new ProfileListViewModel
+            {
+                Profiles = profiles
+            };
+        
+            return View(model);
+        }
 
         [HttpPost]
         public async Task<IActionResult> UploadProfileImage(IFormFile file)

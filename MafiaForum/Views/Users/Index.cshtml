@@ -1,8 +1,9 @@
-﻿@model IEnumerable<MafiaForum.Models.User>
+﻿@using Microsoft.AspNetCore.Identity
+@model IEnumerable<MafiaForum.Models.User>
 @{
     ViewBag.Title = "Список пользователей";
 }
-
+@inject UserManager<User> UserManager
 <a asp-action="Create">Добавить пользователя</a>
 
 <table class="table table-hover" id="forumIndexTable">
@@ -10,7 +11,9 @@
     @foreach (var user in Model)
     {
 <tr>
-    <td>@user.Email</td>
+    <td>
+        <a class="nav-link text-dark" asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">@user.Email</a>
+    </td>
     <td>@user.Nickname</td>
     <td>@user.Firstname</td>
     <td>@user.Lastname</td>

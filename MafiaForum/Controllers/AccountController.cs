@@ -29,7 +29,7 @@ namespace MafiaForum.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = new User { Email = model.Email, UserName = model.Email, Nickname = model.Nickname, Firstname = model.Firstname, Lastname = model.Lastname};
+                User user = new User { MemberSince = DateTime.Now, Email = model.Email, UserName = model.Email, Nickname = model.Nickname, Firstname = model.Firstname, Lastname = model.Lastname};
                 // добавляем пользователя
                 var result = await _userManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)

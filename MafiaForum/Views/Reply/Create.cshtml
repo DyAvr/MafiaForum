@@ -1,15 +1,21 @@
-﻿@model MafiaForum.ViewModels.Reply.PostReplyViewModel
+﻿@using Microsoft.AspNetCore.Identity
+@model MafiaForum.ViewModels.Reply.PostReplyViewModel
+@inject UserManager<User> UserManager
+<style type="text/css">.createPostSelection { }</style>
 
 <div class="container body-content">
     <div class="row sectionHeader">
         <div class="sectionHeading">
             Reply | @Model.PostTitle
+            <span id="headingBtn">
+                <a asp-controller="Post" asp-action="Index" asp-route-id="@Model.PostId" class="btn btn-back">Back to Post</a>
+            </span>
         </div>
-        <div class="forumLogo" style="background-image: url(@Model.ForumImageUrl)"></div>
-        <span id="headingBtn"><a asp-controller="Post" asp-action="Index" asp-route-id="@Model.PostId" class="btn btn-back">Back to Post</a></span>
+        <div class="forumLogo" style="background-image: url(@Model.ForumImageUrl)">
+        </div>
     </div>
     <div class="row">
-        <div id="postReply">
+        <div id="originalPost">
             <h3>
                 @Model.PostTitle
             </h3>
@@ -19,16 +25,15 @@
         </div>
     </div>
     <div class="row">
-        <div id="createReply">
+        <div class="createPostSection">
             <div class="authorBlock">
-                You're submitting this Reply as @Model.AuthorName
+                You're submitting this Reply as <strong>@UserManager.FindByNameAsync(Model.AuthorName).Result.Nickname</strong>
             </div>
-            
             <form asp-action="AddReply" method="post" id="addPostForum">
                 <div asp-validation-summary="All" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="ReplyContent">Reply: </label>
-                    <textarea asp-for="ReplyContent" rows="20" class="form-conrol" 
+                    <textarea asp-for="ReplyContent" rows="20" class="form-control"
                               placeholder="Your reply..."></textarea>
                     <span asp-validation-for="ReplyContent" class="text-danger"></span>
                 </div>

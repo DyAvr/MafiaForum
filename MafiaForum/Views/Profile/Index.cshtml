@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Identity
+@model MafiaForum.ViewModels.User.ProfileListViewModel
+@inject UserManager<User> UserManager
+
+<div class="container body-content">
+    <div class="row sectionHeader">
+        <div class="sectionHeading">Browser Users</div>
+    </div>
+    <div class="row" id="forumIndexContent">
+        <table class="table table-hover" id="userIndexTable">
+            <thead>
+            <tr>
+                <th>Image</th>
+                <th>Nickname</th>
+                <th>Member Since</th>
+                <th>Rating</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach (var profile in Model.Profiles)
+                {
+                <tr class="userRow">
+                    <td>
+                        <div class="userProfilePic" style="background-image: url(@profile.ProfileImageUrl)"></div>
+                    </td>
+                    <td>
+                        <a class="nav-link text-dark" asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">@profile.Nickname</a>
+                    </td>
+                    <td>
+                        @profile.MemeberSince
+                    </td>
+                    <td>
+                        @profile.UserRating
+                    </td>
+                </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

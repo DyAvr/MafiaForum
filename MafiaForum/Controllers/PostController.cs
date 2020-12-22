@@ -17,7 +17,7 @@ namespace MafiaForum.Controllers
         private readonly IPost _postService; //private readonly field to store our PostService
         private readonly IForum _forumService;
         private readonly IUser _userService;
-
+        
         private static UserManager<User> _userManager;
 
         public PostController(IPost postService, IForum forumService, UserManager<User> userManager, IUser userService)

@@ -7,15 +7,15 @@
 <div class="container body-content">
     <div class="row sectionHeader">
         <div class="sectionHeading">
-            <span>@Model.Forum.Title Forum</span>
+            <span class="ml-2">@Model.Forum.Title Forum</span>
             
             @if (Context.User.Identity.IsAuthenticated)
             {
-                <span id="headingBtn">
+                <span id="headingBtn" class="btn-back">
                     <a asp-controller="Post"
                        asp-action="Create"
                        asp-route-id="@Model.Forum.Id"
-                       class="btn btn-newPost" style="text-align : center">
+                       class="btn btn-newPost">
                         Create Post
                     </a>
                 </span>
