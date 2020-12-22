@@ -38,6 +38,8 @@ namespace MafiaForum
 
             services.AddScoped<IForum, ForumService>();
             services.AddScoped<IPost, PostService>();
+            services.AddScoped<IUser, UserService>();
+            services.AddScoped<IUpload, UploadService>();
 
             services.AddControllersWithViews();
         }
