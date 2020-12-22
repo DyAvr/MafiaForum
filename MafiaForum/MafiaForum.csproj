@@ -16,7 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Views\Forum\" />
     <Folder Include="wwwroot\images\forum\" />
   </ItemGroup>
 

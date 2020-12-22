@@ -10,6 +10,6 @@ namespace MafiaForum.Models.Interfaces
         User GetById(string id);
         IEnumerable<User> GetAll();
         Task SetProfileImage(string id, Uri uri);
-        Task IncrementRating(string id, Type type);
+        Task UpdateUserRating(string id, Type type);
     }
 }

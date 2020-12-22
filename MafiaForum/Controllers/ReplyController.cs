@@ -14,11 +14,14 @@ namespace MafiaForum.Controllers
     {
         private readonly IPost _postService;
         private readonly UserManager<User> _userManager;
+        private readonly IUser _userService;
 
-        public ReplyController(IPost postService, UserManager<User> userManager)
+
+        public ReplyController(IPost postService, UserManager<User> userManager, IUser userService)
         {
             _postService = postService;
             _userManager = userManager;
+            _userService = userService;
         }
 
         public async Task<IActionResult> Create(int id)
@@ -58,6 +61,8 @@ namespace MafiaForum.Controllers
             var reply = BuildReply(model, user);
 
             await _postService.AddReply(reply);
+            await _userService.UpdateUserRating(userId, typeof(PostReply));
+
 
             return RedirectToAction("Index", "Post", new {id = model.PostId});
         }
