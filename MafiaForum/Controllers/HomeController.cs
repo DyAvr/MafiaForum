@@ -24,6 +24,17 @@ namespace MafiaForum.Controllers
             return View(model);
         }
 
+        public IActionResult Privacy()
+        {
+            return View();
+        }
+
+        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
+        public IActionResult Error()
+        {
+            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+
         private HomeIndexViewModel BuildHomeIndexViewModel()
         {
             var latestPosts = _postService.GetLatestPosts(5);
@@ -57,17 +68,6 @@ namespace MafiaForum.Controllers
                 Title = forum.Title,
                 ImageUrl = forum.ImageUrl
             };
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
     }
 }

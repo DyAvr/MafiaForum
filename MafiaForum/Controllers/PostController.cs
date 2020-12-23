@@ -6,6 +6,7 @@ using MafiaForum.Models;
 using MafiaForum.Models.Interfaces;
 using MafiaForum.ViewModels.Post;
 using MafiaForum.ViewModels.Reply;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -52,6 +53,7 @@ namespace MafiaForum.Controllers
             return View(model);
         }
 
+        [Authorize]
         public IActionResult Create(int id) //id is Forum.Id
         {
             var forum = _forumService.GetById(id);
@@ -67,6 +69,7 @@ namespace MafiaForum.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddPost(NewPostViewModel model)
         {

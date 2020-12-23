@@ -6,7 +6,7 @@ using MafiaForum.ViewModels.Post;
 using MafiaForum.ViewModels.Search;
 using Microsoft.AspNetCore.Mvc;
 
-namespace LambdaForums.Controllers
+namespace MafiaForum.Controllers
 {
     public class SearchController : Controller
     {

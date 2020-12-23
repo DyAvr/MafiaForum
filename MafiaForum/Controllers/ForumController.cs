@@ -9,6 +9,7 @@ using MafiaForum.Models.Interfaces;
 using MafiaForum.ViewModels;
 using MafiaForum.ViewModels.Forum;
 using MafiaForum.ViewModels.Post;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.WindowsAzure.Storage.Blob;
@@ -84,6 +85,7 @@ namespace MafiaForum.Controllers
             return RedirectToAction("Topic", new { id, searchQuery });
         }
 
+        [Authorize(Roles = "admin")]
         public IActionResult Create()
         {
             var model = new AddForumViewModel();
@@ -91,6 +93,7 @@ namespace MafiaForum.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "admin")]
         public async Task<IActionResult> AddForum(AddForumViewModel model)
         {
             var imageUri = "/images/users/default.png";

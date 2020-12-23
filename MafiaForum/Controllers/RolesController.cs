@@ -10,10 +10,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace MafiaForum.Controllers
 {
+    [Authorize(Roles = "admin")]
     public class RolesController : Controller
     {
-        RoleManager<IdentityRole> _roleManager;
-        UserManager<User> _userManager;
+        readonly RoleManager<IdentityRole> _roleManager;
+        readonly UserManager<User> _userManager;
         public RolesController(RoleManager<IdentityRole> roleManager, UserManager<User> userManager)
         {
             _roleManager = roleManager;

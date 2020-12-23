@@ -71,6 +71,19 @@ body {
     background-position: center;
 }
 
+.MWT {
+    background-color: #EEE;
+    background-image: url("/images/MWT2019.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.thisSearch {
+    padding-right: 24px;
+}
+
+
 .navbar {
     box-shadow: 0 5px 4px -6px #000;
 }

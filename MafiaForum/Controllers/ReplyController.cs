@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using MafiaForum.Models;
 using MafiaForum.Models.Interfaces;
 using MafiaForum.ViewModels.Reply;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
@@ -24,6 +25,7 @@ namespace MafiaForum.Controllers
             _userService = userService;
         }
 
+        [Authorize]
         public async Task<IActionResult> Create(int id)
         {
             var post = _postService.GetById(id);
@@ -52,6 +54,7 @@ namespace MafiaForum.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> AddReply(PostReplyViewModel model)
         {

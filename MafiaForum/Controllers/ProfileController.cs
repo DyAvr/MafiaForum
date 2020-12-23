@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using System.Net.Http.Headers;
+using Microsoft.AspNetCore.Authorization;
 
 namespace MafiaForum.Controllers
 {
@@ -26,6 +27,7 @@ namespace MafiaForum.Controllers
             _configuration = configuration;
         }
 
+        [Authorize]
         public IActionResult Detail(string id)
         {
             var user = _userService.GetById(id);
@@ -68,6 +70,7 @@ namespace MafiaForum.Controllers
             return View(model);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> UploadProfileImage(IFormFile file)
         {
