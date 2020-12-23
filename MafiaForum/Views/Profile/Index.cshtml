@@ -24,7 +24,7 @@
                         <div class="userProfilePic" style="background-image: url(@profile.ProfileImageUrl)"></div>
                     </td>
                     <td>
-                        <a class="nav-link text-dark" asp-controller="Profile" asp-action="Detail" asp-route-id="@UserManager.GetUserId(User)">@profile.Nickname</a>
+                        @profile.Nickname
                     </td>
                     <td>
                         @profile.MemeberSince
