@@ -1,6 +1,10 @@
 ﻿@model IEnumerable<MafiaForum.Models.User>
 
-<h2>Список пользователей</h2>
+<div class="sectionHeader">
+    <div class="sectionHeading">
+        <h2>Список пользователей</h2>
+    </div>
+</div>
 <table class="table table-hover" id="forumIndexTable">
     @foreach (var user in Model)
     {
