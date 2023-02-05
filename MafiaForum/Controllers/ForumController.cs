@@ -97,11 +97,11 @@ namespace MafiaForum.Controllers
         public async Task<IActionResult> AddForum(AddForumViewModel model)
         {
             var imageUri = "/images/users/default.png";
-            if (model.ImageUpload != null)
-            {
-                var blockBlob = UploadForumImage(model.ImageUpload);
-                imageUri = blockBlob.Uri.AbsoluteUri;
-            }
+            //if (model.ImageUpload != null)
+            //{
+            //    var blockBlob = UploadForumImage(model.ImageUpload);
+            //    imageUri = blockBlob.Uri.AbsoluteUri;
+            //}
 
             var forum = new Forum
             {
